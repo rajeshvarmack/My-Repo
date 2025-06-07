@@ -14,11 +14,12 @@ import {
 
 import { StationService } from '../../core/services/station-service';
 import { AuthService } from '../../core/services/auth-service';
+import { PrimeNGShowcaseComponent } from '../../examples/primeng-showcase';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, PrimeNGShowcaseComponent],
   template: `
     <div class="p-6 space-y-6">
       <!-- Welcome Header -->

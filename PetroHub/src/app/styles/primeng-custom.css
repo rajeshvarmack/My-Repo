@@ -1,0 +1,197 @@
+/* PrimeNG Custom Styles for PetroHub - Emerald Theme Integration */
+
+/* Override PrimeNG default colors to match emerald theme */
+:root {
+  /* Primary emerald colors for PrimeNG */
+  --p-primary-50: #ecfdf5;
+  --p-primary-100: #d1fae5;
+  --p-primary-200: #a7f3d0;
+  --p-primary-300: #6ee7b7;
+  --p-primary-400: #34d399;
+  --p-primary-500: #10b981;
+  --p-primary-600: #059669;
+  --p-primary-700: #047857;
+  --p-primary-800: #065f46;
+  --p-primary-900: #064e3b;
+  --p-primary-950: #022c22;
+  
+  /* Surface colors */
+  --p-surface-0: #ffffff;
+  --p-surface-50: #f9fafb;
+  --p-surface-100: #f3f4f6;
+  --p-surface-200: #e5e7eb;
+  --p-surface-300: #d1d5db;
+  --p-surface-400: #9ca3af;
+  --p-surface-500: #6b7280;
+  --p-surface-600: #4b5563;
+  --p-surface-700: #374151;
+  --p-surface-800: #1f2937;
+  --p-surface-900: #111827;
+  --p-surface-950: #030712;
+  
+  /* Content colors */
+  --p-content-color: #374151;
+  --p-content-hover-color: #111827;
+  --p-content-border-color: #e5e7eb;
+  --p-content-border-radius: 0.5rem;
+}
+
+/* Custom button styles to integrate with Tailwind */
+.p-button {
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.p-button.p-button-success {
+  background-color: var(--p-primary-600) !important;
+  border-color: var(--p-primary-600) !important;
+}
+
+.p-button.p-button-success:hover {
+  background-color: var(--p-primary-700) !important;
+  border-color: var(--p-primary-700) !important;
+}
+
+.p-button.p-button-outlined.p-button-success {
+  color: var(--p-primary-600) !important;
+  border-color: var(--p-primary-600) !important;
+  background-color: transparent !important;
+}
+
+.p-button.p-button-outlined.p-button-success:hover {
+  background-color: var(--p-primary-50) !important;
+  color: var(--p-primary-700) !important;
+}
+
+/* Card styling */
+.p-card {
+  border-radius: 0.75rem !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  border: 1px solid var(--p-content-border-color) !important;
+}
+
+.p-card .p-card-header {
+  border-bottom: 1px solid var(--p-content-border-color) !important;
+  padding: 1.5rem !important;
+  background-color: var(--p-surface-50) !important;
+  border-radius: 0.75rem 0.75rem 0 0 !important;
+}
+
+.p-card .p-card-content {
+  padding: 1.5rem !important;
+}
+
+.p-card .p-card-title {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: var(--p-surface-700) !important;
+}
+
+.p-card .p-card-subtitle {
+  color: var(--p-surface-500) !important;
+  font-size: 0.875rem !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Input styling */
+.p-inputtext {
+  border-radius: 0.5rem !important;
+  border: 1px solid var(--p-content-border-color) !important;
+  padding: 0.75rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.p-inputtext:focus {
+  border-color: var(--p-primary-500) !important;
+  box-shadow: 0 0 0 3px rgb(16 185 129 / 0.1) !important;
+  outline: none !important;
+}
+
+/* Table styling */
+.p-datatable {
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+}
+
+.p-datatable .p-datatable-header {
+  background-color: var(--p-surface-50) !important;
+  border-bottom: 1px solid var(--p-content-border-color) !important;
+  padding: 1rem !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background-color: var(--p-surface-50) !important;
+  color: var(--p-surface-700) !important;
+  font-weight: 600 !important;
+  padding: 1rem !important;
+  border-bottom: 1px solid var(--p-content-border-color) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  padding: 1rem !important;
+  border-bottom: 1px solid var(--p-surface-100) !important;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background-color: var(--p-surface-50) !important;
+}
+
+/* Tag styling */
+.p-tag {
+  border-radius: 9999px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+.p-tag.p-tag-success {
+  background-color: var(--p-primary-500) !important;
+  color: white !important;
+}
+
+.p-tag.p-tag-warning {
+  background-color: #f59e0b !important;
+  color: white !important;
+}
+
+.p-tag.p-tag-danger {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+/* Badge styling */
+.p-badge {
+  border-radius: 9999px !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+.p-badge.p-badge-success {
+  background-color: var(--p-primary-500) !important;
+  color: white !important;
+}
+
+/* Ensure PrimeNG components work well with Tailwind utilities */
+.p-component {
+  font-family: inherit !important;
+}
+
+/* Override any conflicting Tailwind reset styles for PrimeNG */
+.p-element {
+  box-sizing: border-box !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .p-card .p-card-header,
+  .p-card .p-card-content {
+    padding: 1rem !important;
+  }
+  
+  .p-datatable .p-datatable-thead > tr > th,
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.75rem !important;
+  }
+}
