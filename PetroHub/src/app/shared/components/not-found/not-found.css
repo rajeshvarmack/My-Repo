@@ -1,0 +1,47 @@
+/* Not Found Component Styles */
+
+.not-found-container {
+  /* Future Horses color scheme - emerald/green palette */
+}
+
+/* Button styles for consistent branding */
+.btn-primary {
+  background-color: #059669;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #047857;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+/* Animation for 404 icon */
+.bounce-animation {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}

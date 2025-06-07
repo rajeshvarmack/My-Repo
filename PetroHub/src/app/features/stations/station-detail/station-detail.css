@@ -1,0 +1,26 @@
+/* Station Detail Component Styles */
+
+.station-detail {
+  /* Future Horses color scheme - emerald/green palette */
+}
+
+/* Custom button styles for consistent branding */
+.btn-primary {
+  background-color: #059669;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #047857;
+}
+
+.btn-secondary {
+  background-color: #4b5563;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #374151;
+}

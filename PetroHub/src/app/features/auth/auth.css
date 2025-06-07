@@ -1,0 +1,34 @@
+/* Auth Component Styles */
+
+.auth-container {
+  min-height: 100vh;
+}
+
+.login-card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.login-card:hover {
+  transform: translateY(-2px);
+}
+
+.form-input {
+  transition: all 0.2s ease-in-out;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

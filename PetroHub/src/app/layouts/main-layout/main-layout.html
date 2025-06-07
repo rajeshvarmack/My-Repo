@@ -1,0 +1,98 @@
+<div class="min-h-screen bg-gray-50">
+  <div class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg">
+    <div class="flex items-center justify-between h-16 px-6 bg-emerald-600">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+          <fa-icon [icon]="faGasPump" class="text-white"></fa-icon>
+        </div>
+        <span class="text-xl font-bold text-white">PetroHub</span>
+      </div>
+      <button (click)="toggleSidebar()" class="lg:hidden p-1 text-white hover:bg-white/20 rounded">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+    <nav class="mt-6">
+      <div class="px-6 mb-6">
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+          <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+            <fa-icon [icon]="faUser" class="text-emerald-600"></fa-icon>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-900">{{ authService.user()?.name }}</p>
+            <p class="text-xs text-gray-500">{{ authService.user()?.role | titlecase }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-1">
+        <a
+          routerLink="/dashboard"
+          routerLinkActive="bg-emerald-50 text-emerald-600"
+          class="flex items-center gap-3 px-6 py-3 text-gray-700"
+        >
+          <fa-icon [icon]="faDashboard"></fa-icon>
+          <span>Dashboard</span>
+        </a>
+        <a
+          routerLink="/stations"
+          routerLinkActive="bg-emerald-50 text-emerald-600"
+          class="flex items-center gap-3 px-6 py-3 text-gray-700"
+        >
+          <fa-icon [icon]="faGasPump"></fa-icon>
+          <span>Stations</span>
+        </a>
+        <a
+          routerLink="/reports"
+          routerLinkActive="bg-emerald-50 text-emerald-600 border-r-2 border-emerald-600"
+          class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+        >
+          <fa-icon [icon]="faChartBar"></fa-icon>
+          <span>Reports</span>
+        </a>
+        @if (authService.hasAdminRole()) {
+          <a
+            routerLink="/admin"
+            routerLinkActive="bg-emerald-50 text-emerald-600 border-r-2 border-emerald-600"
+            class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+          >
+            <fa-icon [icon]="faUsers"></fa-icon>
+            <span>Admin</span>
+          </a>
+        }
+        <a
+          href="#"
+          class="flex items-center gap-3 px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+        >
+          <fa-icon [icon]="faCog"></fa-icon>
+          <span>Settings</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Logout -->
+    <div class="absolute bottom-6 left-0 right-0 px-6">
+      <button
+        (click)="logout()"
+        class="w-full flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+      >
+        <fa-icon [icon]="faSignOutAlt"></fa-icon>
+        <span>Sign Out</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile overlay -->
+  @if (isSidebarOpen()) {
+    <div class="fixed inset-0 bg-black/50 z-40 lg:hidden" (click)="closeSidebar()"></div>
+  }
+
+  <div class="lg:ml-64">
+    <div class="bg-white shadow-sm border-b h-16 flex items-center px-6">
+      <div class="text-sm text-gray-600">
+        {{ currentDate }}
+      </div>
+    </div>
+    <main class="flex-1">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

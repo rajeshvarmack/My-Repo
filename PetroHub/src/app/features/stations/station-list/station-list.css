@@ -1,0 +1,69 @@
+/* Station List Component Styles */
+
+.station-list {
+  /* Future Horses color scheme - emerald/green palette */
+}
+
+/* Table styles */
+.station-table {
+  @apply bg-white rounded-lg shadow-sm border overflow-hidden;
+}
+
+.station-table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.station-table td {
+  @apply px-6 py-4;
+}
+
+/* Button styles for consistent branding */
+.btn-primary {
+  @apply bg-emerald-600 hover:bg-emerald-700 text-white transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-gray-600 hover:bg-gray-700 text-white transition-colors;
+}
+
+/* Status badges with emerald theme */
+.badge-active {
+  @apply bg-emerald-100 text-emerald-800;
+}
+
+.badge-expired {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Action buttons */
+.action-btn-edit {
+  @apply p-2 text-emerald-600 hover:bg-emerald-50 rounded transition-colors;
+}
+
+.action-btn-delete {
+  @apply p-2 text-red-600 hover:bg-red-50 rounded transition-colors;
+}
+
+/* Search and filter styles */
+.search-input {
+  @apply w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg 
+         focus:ring-2 focus:ring-emerald-500 focus:border-transparent;
+}
+
+.filter-select {
+  @apply px-4 py-2 border border-gray-300 rounded-lg 
+         focus:ring-2 focus:ring-emerald-500;
+}
+
+/* Stats cards */
+.stats-card {
+  @apply bg-white rounded-lg shadow-sm border p-6;
+}
+
+.stats-icon-emerald {
+  @apply p-3 bg-emerald-100 rounded-lg;
+}
+
+.stats-icon-emerald fa-icon {
+  @apply text-emerald-600 text-xl;
+}

@@ -1,0 +1,337 @@
+<!-- Station Setup Modal Container -->
+<div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+  <div class="bg-slate-900 rounded-xl max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between p-6 border-b border-slate-700">
+      <div class="flex items-center gap-3">
+        <div class="p-2 bg-emerald-600/20 rounded-lg">
+          <fa-icon [icon]="faMapMarkerAlt" class="text-emerald-400 text-xl"></fa-icon>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold text-white">New Station Setup</h2>
+          <p class="text-sm text-slate-400">Configure your station details and preferences</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button type="button" (click)="onCancel()" class="px-4 py-2 text-slate-400 hover:text-white transition-colors">
+          <fa-icon [icon]="faTimes" class="mr-2"></fa-icon>
+          Cancel
+        </button>
+        <button
+          type="submit"
+          form="stationForm"
+          [disabled]="!isFormValid() || isSubmitting()"
+          class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200 flex items-center gap-2"
+        >
+          <fa-icon [icon]="faCheck" class="text-sm"></fa-icon>
+          {{ isSubmitting() ? 'Creating Station...' : 'Create Station' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Form Content -->
+    <div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+      <!-- Error Message -->
+      @if (submitError()) {
+        <div class="mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-lg">
+          <p class="text-red-400 text-sm">{{ submitError() }}</p>
+        </div>
+      }
+
+      <form id="stationForm" (ngSubmit)="onSubmit()" class="space-y-8">
+        <!-- Form Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Basic Information Section -->
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-medium text-white mb-1">Basic Information</h3>
+              <p class="text-sm text-slate-400">Essential station details</p>
+            </div>
+            <!-- Station Name -->
+            <div class="space-y-2">
+              <label for="stationName" class="block text-sm font-medium text-slate-300">
+                Station Name <span class="text-red-400">*</span>
+              </label>
+              <input
+                id="stationName"
+                type="text"
+                [ngModel]="name()"
+                (ngModelChange)="name.set($event)"
+                placeholder="Enter station name"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                [class.border-red-500]="!!nameError()"
+              />
+              @if (nameError()) {
+                <p class="text-red-400 text-xs">{{ nameError() }}</p>
+              }
+            </div>
+
+            <!-- Station Code -->
+            <div class="space-y-2">
+              <label for="stationCode" class="block text-sm font-medium text-slate-300">
+                Station Code <span class="text-red-400">*</span>
+              </label>
+              <input
+                id="stationCode"
+                type="text"
+                [ngModel]="code()"
+                (ngModelChange)="code.set($event)"
+                placeholder="Enter station code"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                [class.border-red-500]="!!codeError()"
+              />
+              @if (codeError()) {
+                <p class="text-red-400 text-xs">{{ codeError() }}</p>
+              }
+              <p class="text-xs text-slate-500">Format: ABC123 (3 letters + 3 numbers)</p>
+            </div>
+            <!-- Station Type -->
+            <div class="space-y-2">
+              <label for="stationType" class="block text-sm font-medium text-slate-300">
+                Station Type <span class="text-red-400">*</span>
+              </label>
+              <ng-select
+                [ngModel]="type()"
+                (ngModelChange)="type.set($event)"
+                placeholder="Select Station Type"
+                [clearable]="false"
+                [searchable]="false"
+                class="custom-ng-select"
+              >
+                <ng-option *ngFor="let type of stationTypes" [value]="type.value">
+                  {{ type.label }}
+                </ng-option>
+              </ng-select>
+              @if (typeError()) {
+                <p class="text-red-400 text-xs">{{ typeError() }}</p>
+              }
+            </div>
+
+            <!-- Station Relationship -->
+            <div class="space-y-2">
+              <label for="stationRelationship" class="block text-sm font-medium text-slate-300">
+                Station Relationship <span class="text-red-400">*</span>
+              </label>
+              <ng-select
+                [ngModel]="relationship()"
+                (ngModelChange)="relationship.set($event)"
+                placeholder="Select Relationship"
+                [clearable]="false"
+                [searchable]="false"
+                class="custom-ng-select"
+              >
+                <ng-option *ngFor="let rel of relationshipTypes" [value]="rel.value">
+                  {{ rel.label }}
+                </ng-option>
+              </ng-select>
+              @if (relationshipError()) {
+                <p class="text-red-400 text-xs">{{ relationshipError() }}</p>
+              }
+            </div>
+          </div>
+
+          <!-- Location & Organization Section -->
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-medium text-white mb-1">Location & Organization</h3>
+              <p class="text-sm text-slate-400">Geographic and organizational details</p>
+            </div>
+            <!-- Branch Office -->
+            <div class="space-y-2">
+              <label for="branchOffice" class="block text-sm font-medium text-slate-300">
+                Branch Office <span class="text-red-400">*</span>
+              </label>
+              <ng-select
+                [ngModel]="branchOffice()"
+                (ngModelChange)="branchOffice.set($event)"
+                placeholder="Select Branch Office"
+                [clearable]="false"
+                class="custom-ng-select"
+              >
+                <ng-option *ngFor="let office of branchOffices" [value]="office.value">
+                  {{ office.label }}
+                </ng-option>
+              </ng-select>
+              @if (branchOfficeError()) {
+                <p class="text-red-400 text-xs">{{ branchOfficeError() }}</p>
+              }
+            </div>
+
+            <!-- Region -->
+            <div class="space-y-2">
+              <label for="region" class="block text-sm font-medium text-slate-300">
+                Region <span class="text-red-400">*</span>
+              </label>
+              <ng-select
+                [ngModel]="region()"
+                (ngModelChange)="region.set($event)"
+                placeholder="Select Region"
+                [clearable]="false"
+                [searchable]="false"
+                class="custom-ng-select"
+              >
+                <ng-option *ngFor="let region of regions" [value]="region.value">
+                  {{ region.label }}
+                </ng-option>
+              </ng-select>
+              @if (regionError()) {
+                <p class="text-red-400 text-xs">{{ regionError() }}</p>
+              }
+            </div>
+
+            <!-- City -->
+            <div class="space-y-2">
+              <label for="city" class="block text-sm font-medium text-slate-300">
+                City <span class="text-red-400">*</span>
+              </label>
+              <ng-select
+                [ngModel]="city()"
+                (ngModelChange)="city.set($event)"
+                placeholder="Select City"
+                [clearable]="false"
+                class="custom-ng-select"
+              >
+                <ng-option *ngFor="let city of cities" [value]="city.value">
+                  {{ city.label }}
+                </ng-option>
+              </ng-select>
+              @if (cityError()) {
+                <p class="text-red-400 text-xs">{{ cityError() }}</p>
+              }
+            </div>
+            <!-- Station CR Number -->
+            <div class="space-y-2">
+              <label for="crNumber" class="block text-sm font-medium text-slate-300"> Station CR Number </label>
+              <input
+                id="crNumber"
+                type="text"
+                [ngModel]="crNumber()"
+                (ngModelChange)="crNumber.set($event)"
+                placeholder="Enter CR number"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                [class.border-red-500]="!!crNumberError()"
+              />
+              @if (crNumberError()) {
+                <p class="text-red-400 text-xs">{{ crNumberError() }}</p>
+              }
+              <p class="text-xs text-slate-500">Format: CR1234567 (CR + 7 digits)</p>
+            </div>
+          </div>
+
+          <!-- Subscription & Dates Section -->
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-medium text-white mb-1">Subscription & Dates</h3>
+              <p class="text-sm text-slate-400">Subscription settings and important dates</p>
+            </div>
+            <!-- Subscription Type -->
+            <div class="space-y-2">
+              <label for="subscriptionType" class="block text-sm font-medium text-slate-300"> Subscription Type </label>
+              <ng-select
+                [ngModel]="subscriptionType()"
+                (ngModelChange)="subscriptionType.set($event)"
+                placeholder="Select Subscription Type"
+                [clearable]="false"
+                [searchable]="false"
+                class="custom-ng-select"
+              >
+                <ng-option *ngFor="let sub of subscriptionTypes" [value]="sub.value">
+                  {{ sub.label }}
+                </ng-option>
+              </ng-select>
+              @if (subscriptionTypeError()) {
+                <p class="text-red-400 text-xs">{{ subscriptionTypeError() }}</p>
+              }
+            </div>
+
+            <!-- CR Expiry Date -->
+            <div class="space-y-2">
+              <label for="crExpiryDate" class="block text-sm font-medium text-slate-300"> CR Expiry Date </label>
+              <input
+                id="crExpiryDate"
+                type="date"
+                [ngModel]="crExpiryDate()"
+                (ngModelChange)="crExpiryDate.set($event)"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                [class.border-red-500]="!!crExpiryDateError()"
+              />
+              @if (crExpiryDateError()) {
+                <p class="text-red-400 text-xs">{{ crExpiryDateError() }}</p>
+              }
+            </div>
+
+            <!-- Subscription Activation -->
+            <div class="space-y-2">
+              <label for="subscriptionActivation" class="block text-sm font-medium text-slate-300">
+                Subscription Activation
+              </label>
+              <input
+                id="subscriptionActivation"
+                type="date"
+                [ngModel]="subscriptionActivation()"
+                (ngModelChange)="subscriptionActivation.set($event)"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                [class.border-red-500]="!!subscriptionActivationError()"
+              />
+              @if (subscriptionActivationError()) {
+                <p class="text-red-400 text-xs">{{ subscriptionActivationError() }}</p>
+              }
+            </div>
+
+            <!-- Subscription Expiry -->
+            <div class="space-y-2">
+              <label for="subscriptionExpiry" class="block text-sm font-medium text-slate-300">
+                Subscription Expiry
+              </label>
+              <input
+                id="subscriptionExpiry"
+                type="date"
+                [ngModel]="subscriptionExpiry()"
+                (ngModelChange)="subscriptionExpiry.set($event)"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                [class.border-red-500]="!!subscriptionExpiryError()"
+              />
+              @if (subscriptionExpiryError()) {
+                <p class="text-red-400 text-xs">{{ subscriptionExpiryError() }}</p>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto Fuel Request Section -->
+        <div class="pt-6 border-t border-slate-700">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="text-sm font-medium text-white">Enable Auto Fuel Request</h4>
+              <p class="text-xs text-slate-400">Automatically process fuel requests for this station</p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                [ngModel]="autoFuelRequest()"
+                (ngModelChange)="autoFuelRequest.set($event)"
+                class="sr-only peer"
+              />
+              <div
+                class="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"
+              ></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Form Validation Summary -->
+        @if (formErrors().length > 0) {
+          <div class="p-4 bg-red-900/20 border border-red-500/30 rounded-lg">
+            <h4 class="text-sm font-medium text-red-400 mb-2">Please fix the following errors:</h4>
+            <ul class="text-xs text-red-300 space-y-1">
+              @for (error of formErrors(); track $index) {
+                <li>• {{ error }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+</div>
