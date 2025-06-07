@@ -1,0 +1,131 @@
+<!-- Tailwind CSS 4 Test Component -->
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+  <div class="max-w-4xl w-full">
+    <!-- Header Section -->
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold text-gray-900 mb-4">
+        Welcome to
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          {{ title }}
+        </span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8">🎉 Tailwind CSS 4+ is successfully installed and working!</p>
+    </div>
+
+    <!-- Feature Cards Grid -->
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <!-- Card 1: Tailwind CSS -->
+      <div
+        class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300"
+      >
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Tailwind CSS 4+</h3>
+        <p class="text-gray-600 text-sm">Latest version with improved performance and new utility classes</p>
+      </div>
+
+      <!-- Card 2: Angular -->
+      <div
+        class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300"
+      >
+        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">Angular 20+</h3>
+        <p class="text-gray-600 text-sm">Modern Angular framework with zoneless change detection</p>
+      </div>
+
+      <!-- Card 3: ESLint -->
+      <div
+        class="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300"
+      >
+        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2">ESLint Ready</h3>
+        <p class="text-gray-600 text-sm">Comprehensive linting rules for TypeScript and Angular</p>
+      </div>
+    </div>
+
+    <!-- Tailwind Utility Demo Section -->
+    <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-200 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Tailwind CSS Utility Classes Demo</h2>
+
+      <!-- Colors Demo -->
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-gray-700 mb-3">Colors & Gradients</h3>
+        <div class="flex flex-wrap gap-3">
+          <div class="w-16 h-16 bg-blue-500 rounded-lg"></div>
+          <div class="w-16 h-16 bg-green-500 rounded-lg"></div>
+          <div class="w-16 h-16 bg-purple-500 rounded-lg"></div>
+          <div class="w-16 h-16 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-lg"></div>
+          <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg"></div>
+        </div>
+      </div>
+
+      <!-- Spacing & Layout Demo -->
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-gray-700 mb-3">Responsive Layout</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="h-20 bg-blue-200 rounded flex items-center justify-center text-sm font-medium">Col 1</div>
+          <div class="h-20 bg-green-200 rounded flex items-center justify-center text-sm font-medium">Col 2</div>
+          <div class="h-20 bg-yellow-200 rounded flex items-center justify-center text-sm font-medium">Col 3</div>
+          <div class="h-20 bg-purple-200 rounded flex items-center justify-center text-sm font-medium">Col 4</div>
+        </div>
+      </div>
+
+      <!-- Interactive Elements -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-700 mb-3">Interactive Elements</h3>
+        <div class="flex flex-wrap gap-4">
+          <button class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+            Primary Button
+          </button>
+          <button
+            class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            Secondary Button
+          </button>
+          <div class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">Success Badge</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Information -->
+    <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-green-800">Installation Complete!</h3>
+          <div class="mt-2 text-sm text-green-700">
+            <p>✅ Tailwind CSS 4.1.8 installed and configured</p>
+            <p>✅ PostCSS configuration active</p>
+            <p>✅ Global styles imported successfully</p>
+            <p>✅ ESLint configuration updated</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet />

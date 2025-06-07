@@ -1,0 +1,4 @@
+npm run lint        # Check for linting issues
+npm run lint:fix    # Auto-fix fixable issues
+ng lint            # Angular CLI lint (requires Node.js update)
+
