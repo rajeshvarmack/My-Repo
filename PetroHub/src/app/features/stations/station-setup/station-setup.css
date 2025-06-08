@@ -2,81 +2,62 @@
 
 /* Custom ng-select styling to match dark theme */
 ::ng-deep .custom-ng-select.ng-select {
-  min-height: 48px;
+  @apply min-h-[48px];
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-select-container {
-  background-color: rgb(31 41 55);
-  border-color: rgb(75 85 99);
-  border-radius: 0.5rem;
-  min-height: 48px;
+  @apply bg-gray-800 border-gray-600 rounded-lg min-h-[48px];
 }
 
 ::ng-deep .custom-ng-select.ng-select.ng-select-focused .ng-select-container {
-  border-color: rgb(59 130 246);
+  @apply border-blue-500 ring-1 ring-blue-500;
   box-shadow: 0 0 0 1px rgb(59 130 246);
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-select-container .ng-value-container {
-  padding: 0.75rem 1rem;
+  @apply px-4 py-3;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-select-container .ng-value-container .ng-placeholder {
-  color: rgb(156 163 175);
+  @apply text-gray-400;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-select-container .ng-value-container .ng-value {
-  color: white;
+  @apply text-white;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-select-container .ng-arrow-wrapper {
-  padding-right: 1rem;
+  @apply pr-4;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-select-container .ng-arrow-wrapper .ng-arrow {
-  border-top-color: rgb(156 163 175);
-  border-left-color: rgb(156 163 175);
+  @apply border-t-gray-400 border-l-gray-400;
 }
 
 ::ng-deep .custom-ng-select.ng-select.ng-select-opened .ng-select-container .ng-arrow-wrapper .ng-arrow {
-  border-bottom-color: rgb(156 163 175);
-  border-right-color: rgb(156 163 175);
-  border-top-color: transparent;
-  border-left-color: transparent;
+  @apply border-b-gray-400 border-r-gray-400 border-t-transparent border-l-transparent;
 }
 
 /* Dropdown panel styling */
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel {
-  background-color: rgb(31 41 55);
-  border-color: rgb(75 85 99);
-  border-radius: 0.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  @apply bg-gray-800 border-gray-600 rounded-lg shadow-xl;
   margin-top: 4px;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items {
-  max-height: 15rem;
+  @apply max-h-60;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
-  color: rgb(209 213 219);
-  padding: 0.75rem 1rem;
-  transition: all 0.15s ease-in-out;
-}
-
-::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:hover {
-  background-color: rgb(55 65 81);
-  color: white;
+  @apply text-gray-300 px-4 py-3 hover:bg-gray-700 hover:text-white transition-colors;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected {
-  background-color: rgb(37 99 235);
-  color: white;
+  @apply bg-blue-600 text-white;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-highlighted {
-  background-color: rgb(55 65 81);
-  color: white;
+  @apply bg-gray-700 text-white;
 }
 
 ::ng-deep
@@ -84,8 +65,7 @@
   .ng-dropdown-panel
   .ng-dropdown-panel-items
   .ng-option.ng-option-selected.ng-option-highlighted {
-  background-color: rgb(29 78 216);
-  color: white;
+  @apply bg-blue-700 text-white;
 }
 
 /* Custom scrollbar for dropdown */
@@ -99,16 +79,15 @@
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items::-webkit-scrollbar-track {
-  background-color: rgb(31 41 55);
+  @apply bg-gray-800;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items::-webkit-scrollbar-thumb {
-  background-color: rgb(75 85 99);
-  border-radius: 9999px;
+  @apply bg-gray-600 rounded-full;
 }
 
 ::ng-deep .custom-ng-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(107 114 128);
+  @apply bg-gray-500;
 }
 
 /* Date input styling */
@@ -123,34 +102,21 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 /* Loading state styling */
 .loading-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(17, 24, 39, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
+  @apply absolute inset-0 bg-gray-900/50 flex items-center justify-center rounded-lg;
 }
 
 /* Form validation styling */
 .field-error {
-  border-color: rgb(239 68 68);
-  box-shadow: 0 0 0 1px rgb(239 68 68);
+  @apply border-red-500 ring-1 ring-red-500;
 }
 
 .error-message {
-  color: rgb(248 113 113);
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
+  @apply text-red-400 text-xs mt-1;
 }
 
 /* Success state styling */
 .field-success {
-  border-color: rgb(34 197 94);
-  box-shadow: 0 0 0 1px rgb(34 197 94);
+  @apply border-green-500 ring-1 ring-green-500;
 }
 
 /* Animations */
@@ -171,48 +137,27 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 /* Toggle switch custom styling */
 .toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 3rem;
-  height: 1.5rem;
+  @apply relative inline-block w-12 h-6;
 }
 
 .toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+  @apply opacity-0 w-0 h-0;
 }
 
 .toggle-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(75 85 99);
-  transition: all 0.3s ease;
-  border-radius: 9999px;
+  @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-600 transition-all duration-300 rounded-full;
 }
 
 .toggle-slider:before {
-  position: absolute;
-  content: '';
-  height: 1.25rem;
-  width: 1.25rem;
-  left: 0.125rem;
-  bottom: 0.125rem;
-  background-color: white;
-  transition: all 0.3s ease;
-  border-radius: 9999px;
+  @apply absolute content-[''] h-5 w-5 left-0.5 bottom-0.5 bg-white transition-all duration-300 rounded-full;
 }
 
 input:checked + .toggle-slider {
-  background-color: rgb(37 99 235);
+  @apply bg-blue-600;
 }
 
 input:focus + .toggle-slider {
-  box-shadow: 0 0 0 4px rgb(30 58 138);
+  @apply ring-4 ring-blue-800;
 }
 
 input:checked + .toggle-slider:before {
@@ -222,20 +167,17 @@ input:checked + .toggle-slider:before {
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .form-grid {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 1.5rem;
+    @apply grid-cols-1 gap-6;
   }
 }
 
 /* Print styles */
 @media print {
   .modal-overlay {
-    background-color: white;
-    color: black;
+    @apply bg-white text-black;
   }
 
   .modal-content {
-    background-color: white;
-    border: 1px solid rgb(209 213 219);
+    @apply bg-white border border-gray-300;
   }
 }

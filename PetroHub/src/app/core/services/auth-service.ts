@@ -14,10 +14,10 @@ export interface User {
 export class AuthService {
   private readonly _user = signal<User | null>(null);
   private readonly _isAuthenticated = signal(false);
-
   // Public readonly signals
   readonly user = this._user.asReadonly();
   readonly isAuthenticated = computed(() => this._isAuthenticated());
+  readonly userRole = computed(() => this.user()?.role);
   readonly hasAdminRole = computed(() => this.user()?.role === 'admin');
   readonly hasManagerRole = computed(() => this.user()?.role === 'admin' || this.user()?.role === 'manager');
 

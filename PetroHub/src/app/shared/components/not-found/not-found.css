@@ -1,47 +1,19 @@
 /* Not Found Component Styles */
-
 .not-found-container {
-  /* Future Horses color scheme - emerald/green palette */
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
 }
 
-/* Button styles for consistent branding */
-.btn-primary {
-  background-color: #059669;
-  color: white;
-  transition: background-color 0.2s;
+.error-icon {
+  filter: drop-shadow(0 0 20px rgba(234, 179, 8, 0.3));
 }
 
-.btn-primary:hover {
-  background-color: #047857;
+.home-button {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
 }
 
-.btn-secondary {
-  background-color: #e5e7eb;
-  color: #374151;
-  transition: background-color 0.2s;
-}
-
-.btn-secondary:hover {
-  background-color: #d1d5db;
-}
-
-/* Animation for 404 icon */
-.bounce-animation {
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
+.home-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }

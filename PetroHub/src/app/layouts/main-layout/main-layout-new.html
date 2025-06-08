@@ -1,4 +1,5 @@
-<div class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">  <!-- Sidebar -->
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+  <!-- Sidebar -->
   <div 
     [ngClass]="sidebarClasses()" 
     (mouseenter)="onSidebarMouseEnter()" 
@@ -19,7 +20,8 @@
           [class.sr-only]="!shouldShowText()"
           >PetroHub</span
         >
-      </div>      <!-- Desktop Toggle Button -->
+      </div>
+      <!-- Desktop Toggle Button -->
       <button
         (click)="toggleSidebarMinimized(); $event.stopPropagation()"
         class="p-1.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors lg:block hidden z-10"
@@ -28,7 +30,9 @@
       >
         <fa-icon [icon]="isSidebarMinimized() ? faChevronRight : faChevronLeft"></fa-icon>
       </button>
-    </div>    <!-- User Profile -->
+    </div>
+
+    <!-- User Profile -->
     <div class="px-4 py-4 border-b border-slate-700/50">
       <div
         class="flex items-center rounded-lg border border-slate-600/30 hover:bg-slate-600/50 transition-colors"
@@ -54,7 +58,8 @@
 
     <!-- Navigation -->
     <nav class="mt-4 px-4">
-      <div class="space-y-1">        <!-- Dashboard -->
+      <div class="space-y-1">
+        <!-- Dashboard -->
         <div class="relative group">
           <a
             routerLink="/dashboard"
@@ -77,7 +82,9 @@
           >
             Dashboard
           </div>
-        </div>        <!-- Station Management -->
+        </div>
+
+        <!-- Station Management -->
         <div class="relative group">
           <a
             routerLink="/stations"
@@ -101,15 +108,8 @@
             Station Management
           </div>
         </div>
-              <span>Station Management</span>
-          
-          <div
-            *ngIf="!shouldShowText()"
-            class="absolute left-full ml-2 px-2 py-1 bg-slate-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50"
-          >
-            Station Management
-          </div>
-        </div>        <!-- Analytics -->
+
+        <!-- Analytics -->
         <div class="relative group">
           <a
             routerLink="/analytics"
@@ -133,17 +133,8 @@
             Analytics
           </div>
         </div>
-              <span [class.sr-only]="!shouldShowText()"
-              >Analytics</span
-            >
-          
-          <div
-            *ngIf="!shouldShowText()"
-            class="absolute left-full ml-2 px-2 py-1 bg-slate-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50"
-          >
-            Analytics
-          </div>
-        </div>        <!-- Settings -->
+
+        <!-- Settings -->
         <div class="relative group">
           <a
             routerLink="/settings"
@@ -167,23 +158,10 @@
             Settings
           </div>
         </div>
-            <fa-icon [icon]="faCog" class="w-5 h-5"></fa-icon>
-            <span
-              class="transition-opacity duration-300"
-              [class.opacity-0]="!shouldShowText()"
-              [class.sr-only]="!shouldShowText()"
-              >Settings</span
-            >
-          
-          <div
-            *ngIf="!shouldShowText()"
-            class="absolute left-full ml-2 px-2 py-1 bg-slate-800 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50"
-          >
-            Settings
-          </div>
-        </div>
       </div>
-    </nav>    <!-- Logout -->
+    </nav>
+
+    <!-- Logout -->
     <div class="absolute bottom-6 left-0 right-0 px-4">
       <div class="relative group">
         <button
@@ -209,12 +187,15 @@
       </div>
     </div>
   </div>
+  
   <!-- Mobile Overlay -->
   <div
     *ngIf="isMobileSidebarOpen()"
     class="fixed inset-0 bg-black/50 z-40 lg:hidden"
     (click)="closeMobileSidebar()"
-  ></div>  <!-- Main Content Area -->
+  ></div>
+  
+  <!-- Main Content Area -->
   <div
     class="transition-all duration-300"
     [class.lg:ml-64]="!isSidebarMinimized() || isHovered()"
@@ -252,6 +233,7 @@
         </div>
       </div>
     </div>
+    
     <!-- Page Content -->
     <main class="p-4 sm:p-6 lg:p-8">
       <router-outlet></router-outlet>

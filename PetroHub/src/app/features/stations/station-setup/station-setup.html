@@ -4,8 +4,8 @@
     <!-- Modal Header -->
     <div class="flex items-center justify-between p-6 border-b border-slate-700">
       <div class="flex items-center gap-3">
-        <div class="p-2 bg-emerald-600/20 rounded-lg">
-          <fa-icon [icon]="faMapMarkerAlt" class="text-emerald-400 text-xl"></fa-icon>
+        <div class="p-2 bg-blue-600/20 rounded-lg">
+          <fa-icon [icon]="faMapMarkerAlt" class="text-blue-400 text-xl"></fa-icon>
         </div>
         <div>
           <h2 class="text-xl font-semibold text-white">New Station Setup</h2>
@@ -22,7 +22,7 @@
           type="submit"
           form="stationForm"
           [disabled]="!isFormValid() || isSubmitting()"
-          class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200 flex items-center gap-2"
+          class="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-200 flex items-center gap-2"
         >
           <fa-icon [icon]="faCheck" class="text-sm"></fa-icon>
           {{ isSubmitting() ? 'Creating Station...' : 'Create Station' }}
@@ -314,7 +314,7 @@
                 class="sr-only peer"
               />
               <div
-                class="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"
+                class="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"
               ></div>
             </label>
           </div>

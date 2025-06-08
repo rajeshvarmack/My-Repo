@@ -6,14 +6,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { faMapMarkerAlt, faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import { StationService, CreateStationRequest } from '../../../core/services/station-service';
+import { StationService, StationSetupRequest } from '../../../core/services/station-service';
 
 @Component({
   selector: 'app-station-setup',
   standalone: true,
   imports: [CommonModule, NgSelectModule, FontAwesomeModule, FormsModule],
   templateUrl: './station-setup.html',
-  styleUrls: ['./station-setup.css'],
+  styleUrl: './station-setup.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StationSetupComponent {
@@ -185,7 +185,7 @@ export class StationSetupComponent {
     this.submitError.set(null);
 
     try {
-      const stationData: CreateStationRequest = {
+      const stationData: StationSetupRequest = {
         name: this.name(),
         code: this.code(),
         type: this.type() as 'company_owned' | 'dealer_owned' | 'coco' | 'dodo',
@@ -200,13 +200,12 @@ export class StationSetupComponent {
         subscriptionExpiry: new Date(this.subscriptionExpiry()),
         autoFuelRequest: this.autoFuelRequest(),
       };
-      const result = await this.stationService.createStation(stationData);
-
+      const result = await this.stationService.setupStation(stationData);
       if (result) {
         // Success - navigate to stations list
         await this.router.navigate(['/stations']);
       } else {
-        this.submitError.set('Failed to create station. Please try again.');
+        this.submitError.set('Failed to setup station. Please try again.');
       }
     } catch {
       this.submitError.set('An error occurred while creating the station.');

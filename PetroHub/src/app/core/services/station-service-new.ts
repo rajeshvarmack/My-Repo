@@ -1,5 +1,6 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 export interface Station {
   id: string;
@@ -65,10 +66,9 @@ export class StationService {
   readonly stations = this._stations.asReadonly();
   readonly loading = this._loading.asReadonly();
   readonly error = this._error.asReadonly();
+
   // Computed properties
   readonly stationsCount = computed(() => this.stations().length);
-  readonly totalStations = computed(() => this.stations().length);
-  readonly activeStations = computed(() => this.stations().filter(station => station.status === 'active'));
 
   constructor() {
     this.loadMockData();
@@ -137,6 +137,7 @@ export class StationService {
 
     this._stations.set(mockStations);
   }
+
   public async createStation(stationData: CreateStationRequest): Promise<Station | null> {
     this._loading.set(true);
     this._error.set(null);
@@ -152,14 +153,16 @@ export class StationService {
 
       this._stations.update(stations => [...stations, newStation]);
       return newStation;
-    } catch {
+    } catch (error) {
+      console.error('Failed to create station:', error);
       this._error.set('Failed to create station. Please try again.');
       return null;
     } finally {
       this._loading.set(false);
     }
   }
-  public async setupStation(_setupData: StationSetupRequest): Promise<boolean> {
+
+  public async setupStation(setupData: StationSetupRequest): Promise<boolean> {
     this._loading.set(true);
     this._error.set(null);
 
@@ -168,14 +171,17 @@ export class StationService {
       await new Promise(resolve => setTimeout(resolve, 1500));
 
       // Mock successful setup
+      console.log('Station setup data:', setupData);
       return true;
-    } catch {
+    } catch (error) {
+      console.error('Failed to setup station:', error);
       this._error.set('Failed to setup station. Please try again.');
       return false;
     } finally {
       this._loading.set(false);
     }
   }
+
   public async updateStation(id: string, stationData: Partial<Station>): Promise<Station | null> {
     this._loading.set(true);
     this._error.set(null);
@@ -190,13 +196,15 @@ export class StationService {
       );
 
       return updatedStation as Station;
-    } catch {
+    } catch (error) {
+      console.error('Failed to update station:', error);
       this._error.set('Failed to update station. Please try again.');
       return null;
     } finally {
       this._loading.set(false);
     }
   }
+
   public async deleteStation(id: string): Promise<boolean> {
     this._loading.set(true);
     this._error.set(null);
@@ -207,14 +215,20 @@ export class StationService {
 
       this._stations.update(stations => stations.filter(station => station.id !== id));
       return true;
-    } catch {
+    } catch (error) {
+      console.error('Failed to delete station:', error);
       this._error.set('Failed to delete station. Please try again.');
       return false;
     } finally {
       this._loading.set(false);
     }
   }
+
   public getStationById(id: string): Station | undefined {
     return this.stations().find(station => station.id === id);
   }
+}
+
+function inject(token: any): any {
+  return new token();
 }

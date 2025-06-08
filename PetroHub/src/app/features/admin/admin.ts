@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './admin.html',
-  styleUrls: ['./admin.css'],
+  styleUrl: './admin.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminComponent {}

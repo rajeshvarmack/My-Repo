@@ -3,11 +3,5 @@
 /* Tailwind CSS */
 @import 'tailwindcss';
 
-/* PrimeIcons - Add basic icon support */
-@import url('https://cdn.jsdelivr.net/npm/primeicons@7.0.0/primeicons.css');
-
-/* Custom PrimeNG Styles for Emerald Theme */
-@import './app/styles/primeng-custom.css';
-
 /* ng-select Theme */
 @import '@ng-select/ng-select/themes/default.theme.css';
